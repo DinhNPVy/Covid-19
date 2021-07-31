@@ -9,7 +9,8 @@
     <link rel="shortcut icon" href="img/removelogo.png">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/chart.min.css">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -57,23 +58,23 @@
                         <div id="code"></div>
                     </td>
                     <td>
-                        <div id="quocgia" style="color:red"></div>
+                        <div id="country" style="color:red"></div>
                     </td>
 
                     <td>
-                        <div id="socanhiem"></div>
+                        <div id="cases"></div>
                     </td>
                     <td>
-                        <div id="khoi"></div>
+                        <div id="recovered"></div>
                     </td>
                     <td>
-                        <div id="tuvong"></div>
+                        <div id="deaths"></div>
                     </td>
                     <td>
-                        <div id="capnhattv"></div>
+                        <div id="update_deaths"></div>
                     </td>
                     <td>
-                        <div id="pttv"></div>
+                        <div id="percent_deaths"></div>
                     </td>
 
                 </tr>
@@ -88,14 +89,17 @@
             <div class="row mt-5">
 
                 <div class="col text-center text-uppercase text-danger-new">
-                    Số ca nhiễm <br> <span class="font24" id="tong_socanhiemvn"></span>
+                    Số ca nhiễm <br> <span class="font24" id="total_casesvn"></span>
+                </div>
+                <div class="col text-center text-uppercase text-warning">
+                    Đang điều trị <br> <span class="font24" id="active_vn"></span>
                 </div>
 
                 <div class="col text-center text-uppercase text-success">
-                    Khỏi <br> <span class="font24" id="tong_khoivn"></span>
+                    Khỏi <br> <span class="font24" id="total_recoveredvn"></span>
                 </div>
                 <div class="col text-center text-uppercase text-danger-new1">
-                    Tử vong <br> <span class="font24" id="tong_tuvongvn"></span>
+                    Tử vong <br> <span class="font24" id="total_deathsvn"></span>
                 </div>
 
             </div>
@@ -104,14 +108,17 @@
             <div class="row mt-5" style="margin-top: 55px !important;">
 
                 <div class="col text-center text-uppercase text-danger-new">
-                    Tổng ca nhiễm <br> <span class="font24" id="tong_socanhiem"></span>
+                    Tổng ca nhiễm <br> <span class="font24" id="total_cases"></span>
+                </div>
+                <div class="col text-center text-uppercase text-warning">
+                    Đang nhiễm <br> <span class="font24" id="active_world"></span>
                 </div>
 
                 <div class="col text-center text-uppercase text-success">
-                    Khỏi <br> <span class="font24" id="tong_dangkhoi"></span>
+                    Khỏi <br> <span class="font24" id="total_recovered"></span>
                 </div>
                 <div class="col text-center text-uppercase text-danger-new1">
-                    Tử vong <br> <span class="font24" id="tong_tuvong"></span>
+                    Tử vong <br> <span class="font24" id="total_deaths"></span>
                 </div>
 
             </div>
@@ -140,7 +147,7 @@
                     </div>
                 </div>
                 <h6 class="btn btn-danger">Số ca nhiễm</h6>
-                <canvas id="line-chart-canhiem-web" width="318" height="158"
+                <canvas id="line-chart-cases-web" width="318" height="158"
                     style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
             </div>
             <div class="mb-4">
@@ -153,7 +160,7 @@
                     </div>
                 </div>
                 <h6 class="btn btn-success">Số ca phục hồi</h6>
-                <canvas id="line-chart-cakhoi-web" width="318" height="158"
+                <canvas id="line-chart-recovered-web" width="318" height="158"
                     style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
             </div>
             <div class="">
@@ -166,7 +173,7 @@
                     </div>
                 </div>
                 <h6 class="btn btn-dark">Số ca tử vong</h6>
-                <canvas id="line-chart-catuvong-web" width="318" height="158"
+                <canvas id="line-chart-deaths-web" width="318" height="158"
                     style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
             </div>
         </div>
@@ -187,6 +194,7 @@
 
 
     </div>
+
 
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>

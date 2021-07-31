@@ -27,7 +27,7 @@ function myChart() {
             // deaths.shift();
 
 
-            var ctx = document.getElementById('line-chart-canhiem-web');
+            var ctx = document.getElementById('line-chart-cases-web');
             ctx.height = 200;
             new Chart(ctx, {
                 type: 'line',
@@ -50,7 +50,7 @@ function myChart() {
                 }
             });
 
-            var ctx = document.getElementById("line-chart-cakhoi-web");
+            var ctx = document.getElementById("line-chart-recovered-web");
             ctx.height = 200;
             new Chart(ctx, {
                 type: 'line',
@@ -72,7 +72,7 @@ function myChart() {
                     }
                 }
             });
-            var ctx = document.getElementById("line-chart-catuvong-web");
+            var ctx = document.getElementById("line-chart-deaths-web");
             ctx.height = 200;
             new Chart(ctx, {
                 type: 'line',

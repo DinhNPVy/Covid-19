@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+   
 }
 
 .container{
@@ -15,7 +16,7 @@
     height: 30vh;
     background-color: rgb(238, 241, 241);
     border-radius: 20px;
-    box-shadow: 0px 20px 50px rgba(0,0,0,.5);
+    box-shadow: 0px 20px 50px rgba(111, 108, 108, 0.5);
     list-style: none;
     float: left;
     padding: 20px;

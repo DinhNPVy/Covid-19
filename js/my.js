@@ -28,20 +28,20 @@ function getCountryById(key) {
 
             if (data.location.province != "") {
 
-                document.getElementById('quocgia').innerHTML = country.toLocaleString("en") + '-' + static.toLocaleString("en");
+                document.getElementById('country').innerHTML = country.toLocaleString("en") + '-' + static.toLocaleString("en");
                 document.getElementById('title').innerText = country.toLocaleString("en") + '-' + static.toLocaleString("en");
             } else {
-                document.getElementById('quocgia').innerHTML = country.toLocaleString("en");
+                document.getElementById('country').innerHTML = country.toLocaleString("en");
                 document.getElementById('title').innerText = country.toLocaleString("en");
             }
 
             document.getElementById('code').innerHTML = code.toLocaleString("en");
-            document.getElementById('quocgia').innerHTML = country.toLocaleString("en");
-            document.getElementById('socanhiem').innerHTML = confirmed.toLocaleString("en");
-            document.getElementById('khoi').innerHTML = recovered.toLocaleString("en");
-            document.getElementById('tuvong').innerHTML = deaths.toLocaleString("en");
-            document.getElementById('capnhattv').innerHTML = last_updated.substring(0, 10);
-            document.getElementById('pttv').innerHTML = (Number(deaths) / Number(confirmed) * 100).toLocaleString("en", {
+            document.getElementById('country').innerHTML = country.toLocaleString("en");
+            document.getElementById('cases').innerHTML = confirmed.toLocaleString("en");
+            document.getElementById('recovered').innerHTML = recovered.toLocaleString("en");
+            document.getElementById('deaths').innerHTML = deaths.toLocaleString("en");
+            document.getElementById('update_deaths').innerHTML = last_updated.substring(0, 10);
+            document.getElementById('percent_deaths').innerHTML = (Number(deaths) / Number(confirmed) * 100).toLocaleString("en", {
                 minimumFractionDigits: 2,
                 maximumFractionDigits: 2
             }) + "%";
@@ -51,24 +51,34 @@ function getCountryById(key) {
 }
 
 function getCovidCountry() {
-    fetch(' https://coronavirus-tracker-api.herokuapp.com/v2/locations/274')
+    fetch('https://corona.lmao.ninja/v2/countries/')
         .then(res => res.json())
         .then(data => {
-            //console.log(data);
+            console.log(data);
 
-            let code = data.location.country_code;
-            let country = data.location.country;
 
-            let confirmed = data.location.latest.confirmed;
-            let recovered = data.location.latest.recovered;
-            let deaths = data.location.latest.deaths;
-            let last_updated = data.location.last_updated;
+            var cases = [];
+            var recovered = [];
+            var deaths = [];
+            var active = [];
 
 
 
-            document.getElementById('tong_socanhiemvn').innerHTML = confirmed.toLocaleString("en");
-            document.getElementById('tong_khoivn').innerHTML = recovered.toLocaleString("en");
-            document.getElementById('tong_tuvongvn').innerHTML = deaths.toLocaleString("en");
+
+            $.each(data, function (id, obj) {
+                //day.push(obj.ngay);
+                cases.push(obj.cases);
+                recovered.push(obj.recovered);
+                deaths.push(obj.deaths);
+                active.push(obj.active);
+            });
+
+
+
+            document.getElementById('total_casesvn').innerHTML = cases[216].toLocaleString("en");
+            document.getElementById('total_recoveredvn').innerHTML = recovered[216].toLocaleString("en");
+            document.getElementById('total_deathsvn').innerHTML = deaths[216].toLocaleString("en");
+            document.getElementById('active_vn').innerHTML = active[216].toLocaleString("en");
 
 
 
@@ -79,7 +89,7 @@ function getCovidCountryVN() {
     fetch('https://api.ncovvn.xyz/cityvn')
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            //console.log(data);
 
             var place = [];
             var confirmed = [];
@@ -103,25 +113,25 @@ function getCovidCountryVN() {
                 data: {
                     labels: place,
                     datasets: [{
-                        label: "Total_Confirmed",
+                        label: "Totally Confirm",
                         data: confirmed,
                         borderColor: "#c9302c",
                         backgroundColor: "#c9302c",
-                        minBarLength: 150,
+                        // minBarLength: 150,
                         fill: false
                     }, {
                         label: "Today",
                         data: cur,
                         borderColor: "##c55f4e",
                         backgroundColor: "#c55f4e",
-                        minBarLength: 150,
+                        // minBarLength: 150,
                         fill: false
                     }, {
                         label: "Deaths",
                         data: deaths,
                         borderColor: "#5b5759",
                         backgroundColor: "#5b5759",
-                        minBarLength: 150,
+                        // minBarLength: 150,
                         fill: false
                     }]
                 },
@@ -144,41 +154,25 @@ function getCovidCountryVN() {
 
 // dua tren lua chon
 function getCovidAll() {
-    fetch(' https://coronavirus-tracker-api.herokuapp.com/v2/locations')
+    fetch('https://api.ncovvn.xyz/wom')
         .then(res => res.json())
         .then(data => {
-            console.log(data);
-            let confirmed = data.latest.confirmed;
-            let recovered = data.latest.recovered;
-            let deaths = data.latest.deaths;
-            document.getElementById('tong_socanhiem').innerHTML = confirmed.toLocaleString("en");
-            document.getElementById('tong_dangkhoi').innerHTML = recovered.toLocaleString("en");
-            document.getElementById('tong_tuvong').innerHTML = deaths.toLocaleString("en");
+            //console.log(data);
 
-            const html = data.locations.map(covid => {
-                const code = covid.country_code;
-                const country = covid.country;
 
-                const confirmed = covid.latest.confirmed;
-                const recovered = covid.latest.recovered;
-                const deaths = covid.latest.deaths;
 
-                return `
-                <ul class="list_world">
-                    <li>
-                        <p>Mã Quốc gia: ${code.toLocaleString("en")}</p>
-                        <p style="color:red">Quốc gia: ${country.toLocaleString("en")}</p>
-                        <p>Số Ca Nhiễm: ${confirmed.toLocaleString("en")}</p>
-                        <p>Khỏi: ${recovered.toLocaleString("en")}</p>
-                        <p>Tử Vong: ${deaths.toLocaleString("en")}</p>
+            let cases = data.cases;
+            let recovered = data.recovered;
+            let deaths = data.deaths;
+            let activetg = data.active;
 
-                    </li>
+            document.getElementById('total_cases').innerHTML = cases.toLocaleString("en");
+            document.getElementById('total_recovered').innerHTML = recovered.toLocaleString("en");
+            document.getElementById('total_deaths').innerHTML = deaths.toLocaleString("en");
+            document.getElementById('active_world').innerHTML = activetg.toLocaleString("en");
 
-                </ul>
-                `
-
-            }).join("");
-            document.getElementById('list').insertAdjacentHTML("afterbegin", html);
+            //.join("");
+            // document.getElementById('list').insertAdjacentHTML("afterbegin", html);
 
 
 
@@ -263,14 +257,14 @@ function getCovidCountryVNAT() {
                         data: warning,
                         borderColor: "##ffdf6f",
                         backgroundColor: "#ffdf6f",
-                        minBarLength: 150,
+                        //minBarLength: 150,
                         fill: false
                     }, {
                         label: "Danger",
                         data: danger,
                         borderColor: "#c9302c",
                         backgroundColor: "#c9302c",
-                        minBarLength: 150,
+                        //minBarLength: 150,
                         fill: false
                     }]
                 },
