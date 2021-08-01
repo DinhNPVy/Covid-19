@@ -77,3 +77,45 @@ p,th, td, li{
     font-weight: 700;
     line-height: 1;
 }
+
+.footer{
+    background-color: rgb(179, 177, 177);
+    /* position: fixed; */
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    float: left;
+}
+.icon{
+    float: left;
+    margin: 45px;
+}
+
+h5{
+    margin: 25px;
+}
+li{
+    list-style: none;
+    padding: 5px;
+    margin: 1px;
+    margin-left: -5px;
+   
+}
+#mymap {
+    height: 500px; 
+    min-width: 310px; 
+    max-width: 800px; 
+    margin: 0 auto; 
+}
+.loading {
+    margin-top: 10em;
+    text-align: center;
+    color: gray;
+}
+
+#map{
+    width: 87vw; 
+    height: 90vh;
+    border-radius: 50px;
+}

@@ -136,12 +136,12 @@ function getCovidCountryVN() {
                     }]
                 },
                 options: {
-                    // title: {
-                    //     display: false
-                    // },
-                    // legend: {
-                    //     display: false
-                    // }
+                    title: {
+                        display: false
+                    },
+                    legend: {
+                        display: false
+                    }
                 }
             });
 
@@ -270,12 +270,12 @@ function getCovidCountryVNAT() {
                 },
 
                 options: {
-                    // title: {
-                    //     display: false
-                    // },
-                    // legend: {
-                    //     display: false
-                    // }
+                    title: {
+                        display: false
+                    },
+                    legend: {
+                        display: false
+                    }
                 }
             });
 
