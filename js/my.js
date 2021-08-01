@@ -54,7 +54,7 @@ function getCovidCountry() {
     fetch('https://corona.lmao.ninja/v2/countries/')
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            //console.log(data);
 
 
             var cases = [];
@@ -220,7 +220,7 @@ function getCovidCountryVNAT() {
     fetch('https://api.ncovvn.xyz/antoan')
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            // console.log(data);
 
             var place = [];
             var safe = [];

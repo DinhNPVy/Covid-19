@@ -5,7 +5,7 @@ function updateMap() {
     fetch('https://corona.lmao.ninja/v2/countries/')
         .then(res => res.json())
         .then(data => {
-            console.log(data);
+            //console.log(data);
 
             data.map(e => {
                 const lat = e.countryInfo.lat;
