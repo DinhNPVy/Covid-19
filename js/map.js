@@ -33,143 +33,125 @@ function updateMap() {
 
         })
 }
-// mapCovidVN();
+mapCovidVN();
 
-// function mapCovidVN() {
-//     fetch('https://api.ncovvn.xyz/cityvn')
-//         .then(res => res.json())
-//         .then(data => {
-//             console.log(data);
-//             var states = [];
-//             var confirmed = [];
-//             var recovered = [];
-//             var deaths = [];
-//             var day = [];
+function mapCovidVN() {
+    fetch('https://api.ncovvn.xyz/cityvn')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data);
 
+            var data = [
+                ['vn-3655', 0],
+                ['vn-qn', data[37].tong_ca_nhiem],
+                ['vn-kh', data[6].tong_ca_nhiem],
+                ['vn-tg', data[7].tong_ca_nhiem],
+                ['vn-bv', data[12].tong_ca_nhiem],
+                ['vn-bu', data[17].tong_ca_nhiem],
+                ['vn-hc', data[0].tong_ca_nhiem],
+                ['vn-br', data[16].tong_ca_nhiem],
+                ['vn-st', data[26].tong_ca_nhiem],
+                ['vn-pt', data[54].tong_ca_nhiem],
+                ['vn-yb', data[58].tong_ca_nhiem],
+                ['vn-hd', data[18].tong_ca_nhiem],
+                ['vn-bn', data[10].tong_ca_nhiem],
+                ['vn-317', 0],
+                ['vn-nb', data[41].tong_ca_nhiem],
+                ['vn-hm', data[43].tong_ca_nhiem],
+                ['vn-ho', data[46].tong_ca_nhiem],
+                ['vn-vc', data[30].tong_ca_nhiem],
+                ['vn-318', data[9].tong_ca_nhiem],
+                ['vn-bg', data[3].tong_ca_nhiem],
+                ['vn-tb', data[42].tong_ca_nhiem],
+                ['vn-ld', data[45].tong_ca_nhiem],
+                ['vn-bp', data[32].tong_ca_nhiem],
+                ['vn-py', data[13].tong_ca_nhiem],
+                ['vn-bd', data[27].tong_ca_nhiem],
+                ['vn-724', data[34].tong_ca_nhiem],
+                ['vn-qg', data[22].tong_ca_nhiem],
+                ['vn-331', 0],
+                ['vn-dt', data[5].tong_ca_nhiem],
+                ['vn-la', data[2].tong_ca_nhiem],
+                ['vn-3623', data[48].tong_ca_nhiem],
+                ['vn-337', data[29].tong_ca_nhiem],
+                ['vn-bl', data[39].tong_ca_nhiem],
+                ['vn-vl', data[15].tong_ca_nhiem],
+                ['vn-tn', data[8].tong_ca_nhiem],
+                ['vn-ty', data[55].tong_ca_nhiem],
+                ['vn-li', data[61].tong_ca_nhiem],
+                ['vn-311', data[51].tong_ca_nhiem],
+                ['vn-hg', data[52].tong_ca_nhiem],
+                ['vn-nd', data[50].tong_ca_nhiem],
+                ['vn-328', data[33].tong_ca_nhiem],
+                ['vn-na', data[28].tong_ca_nhiem],
+                ['vn-qb', data[56].tong_ca_nhiem],
+                ['vn-723', data[31].tong_ca_nhiem],
+                ['vn-nt', data[25].tong_ca_nhiem],
+                ['vn-6365', 0],
+                ['vn-299', data[54].tong_ca_nhiem],
+                ['vn-300', data[24].tong_ca_nhiem],
+                ['vn-qt', data[49].tong_ca_nhiem],
+                ['vn-tt', data[40].tong_ca_nhiem],
+                ['vn-da', data[11].tong_ca_nhiem],
+                ['vn-ag', data[19].tong_ca_nhiem],
+                ['vn-cm', data[47].tong_ca_nhiem],
+                ['vn-tv', data[20].tong_ca_nhiem],
+                ['vn-cb', 0],
+                ['vn-kg', data[21].tong_ca_nhiem],
+                ['vn-lo', data[53].tong_ca_nhiem],
+                ['vn-db', data[44].tong_ca_nhiem],
+                ['vn-ls', data[35].tong_ca_nhiem],
+                ['vn-th', data[36].tong_ca_nhiem],
+                ['vn-307', 0],
+                ['vn-tq', data[60].tong_ca_nhiem],
+                ['vn-bi', data[1].tong_ca_nhiem],
+                ['vn-333', data[35].tong_ca_nhiem]
+            ];
 
+            Highcharts.mapChart('mymap', {
+                chart: {
+                    map: 'countries/vn/vn-all'
+                },
 
-//             $.each(data, function (id, obj) {
-//                 day.push(obj.ngay);
-//                 states.push(obj.dia_diem);
-//                 confirmed.push(obj.tong_ca_nhiem);
-//                 recovered.push(obj.hom_nay);
-//                 deaths.push(obj.tu_vong);
-//             });
+                title: {
+                    text: 'Bản đồ theo dõi tổng ca nhiễm COVID-19'
+                },
 
-//             var data = [
-//                 ['vn-3655', confirmed],
-//                 ['vn-qn', 1],
-//                 ['vn-kh', 2],
-//                 ['vn-tg', 3],
-//                 ['vn-bv', 4],
-//                 ['vn-bu', 5],
-//                 ['vn-hc', [{
-//                     "scn": confirmed[0],
-//                     "tuvong": deaths[0],
-//                 }]],
-//                 ['vn-br', 7],
-//                 ['vn-st', 8],
-//                 ['vn-pt', 9],
-//                 ['vn-yb', 10],
-//                 ['vn-hd', 11],
-//                 ['vn-bn', 12],
-//                 ['vn-317', 13],
-//                 ['vn-nb', 14],
-//                 ['vn-hm', 15],
-//                 ['vn-ho', 16],
-//                 ['vn-vc', 17],
-//                 ['vn-318', 18],
-//                 ['vn-bg', 19],
-//                 ['vn-tb', 20],
-//                 ['vn-ld', 21],
-//                 ['vn-bp', 22],
-//                 ['vn-py', 23],
-//                 ['vn-bd', 24],
-//                 ['vn-724', 25],
-//                 ['vn-qg', 26],
-//                 ['vn-331', 27],
-//                 ['vn-dt', 28],
-//                 ['vn-la', 29],
-//                 ['vn-3623', 30],
-//                 ['vn-337', 31],
-//                 ['vn-bl', 32],
-//                 ['vn-vl', 33],
-//                 ['vn-tn', 34],
-//                 ['vn-ty', 35],
-//                 ['vn-li', 36],
-//                 ['vn-311', 37],
-//                 ['vn-hg', 38],
-//                 ['vn-nd', 39],
-//                 ['vn-328', 40],
-//                 ['vn-na', 41],
-//                 ['vn-qb', 42],
-//                 ['vn-723', 43],
-//                 ['vn-nt', 44],
-//                 ['vn-6365', 45],
-//                 ['vn-299', 46],
-//                 ['vn-300', 47],
-//                 ['vn-qt', 48],
-//                 ['vn-tt', 49],
-//                 ['vn-da', 50],
-//                 ['vn-ag', 51],
-//                 ['vn-cm', 52],
-//                 ['vn-tv', 53],
-//                 ['vn-cb', 54],
-//                 ['vn-kg', 55],
-//                 ['vn-lo', 56],
-//                 ['vn-db', 57],
-//                 ['vn-ls', 58],
-//                 ['vn-th', 59],
-//                 ['vn-307', 60],
-//                 ['vn-tq', 61],
-//                 ['vn-bi', confirmed[1]],
-//                 ['vn-333', 63]
-//             ];
+                // subtitle: {
+                //     text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/vn/vn-all.js">Vietnam</a>'
+                // },
 
-//             Highcharts.mapChart('mymap', {
-//                 chart: {
-//                     map: 'countries/vn/vn-all'
-//                 },
+                mapNavigation: {
+                    enabled: true,
+                    buttonOptions: {
+                        verticalAlign: 'bottom'
+                    }
+                },
 
-//                 title: {
-//                     text: 'Highmaps basic demo'
-//                 },
+                colorAxis: {
+                    min: 0
+                },
 
-//                 subtitle: {
-//                     text: 'Source map: <a href="http://code.highcharts.com/mapdata/countries/vn/vn-all.js">Vietnam</a>'
-//                 },
-
-//                 mapNavigation: {
-//                     enabled: true,
-//                     buttonOptions: {
-//                         verticalAlign: 'bottom'
-//                     }
-//                 },
-
-//                 colorAxis: {
-//                     min: 0
-//                 },
-
-//                 series: [{
-//                     data: data,
-//                     name: 'Random data',
-//                     states: {
-//                         hover: {
-//                             color: '#BADA55'
-//                         }
-//                     },
-//                     dataLabels: {
-//                         enabled: true,
-//                         format: '{point.name}'
-//                     }
-//                 }]
+                series: [{
+                    data: data,
+                    name: 'Random data',
+                    states: {
+                        hover: {
+                            color: '#BADA55'
+                        }
+                    },
+                    dataLabels: {
+                        enabled: false,
+                        format: '{point.name}'
+                    }
+                }]
 
 
 
 
-//             });
+            });
 
 
-//         });
+        });
 
-// }
+}

@@ -21,209 +21,222 @@
 
 <body>
     <div class="container" style="">
+        <div class="row">
 
-        <div class="col-md-12" style="text-align: center;">
-            <h3> <span><img style="height: 50px;" src="img/removelogo.png" alt=""></span>
-                COVID-19
-                <span><img style="height: 50px;" src="img/removelogo.png" alt=""></span>
-            </h3>
-            <p>Link1: <a href="https://ncovvn.xyz/">https://api.ncovvn.xyz</a>
-                <a href="https://ncovvn.xyz/">(đang sử dụng)</a> </p>
-            <p>Link2: <a
-                    href="https://github.com/ExpDev07/coronavirus-tracker-api">https://github.com/ExpDev07/coronavirus-tracker-api</a>
-                <a href="https://github.com/ExpDev07/coronavirus-tracker-api">(đang sử dụng)</a>
-            </p>
-
-        </div>
-        <p class="btn btn-danger"><b style="color: rgb(243, 225, 225);">Theo dõi tình trạng COVID tại: </b>
-            <b style="color:black;"> <span id="title"></span></b>
-
-        </p>
-        <select id="select_world" class="form-control">
-            <option value="">Chọn Quốc Gia</option>
-        </select>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Mã Quốc gia</th>
-                    <th>Quốc gia</th>
-
-                    <th>Số Ca Nhiễm</th>
-                    <th>Khỏi</th>
-                    <th>Tử Vong</th>
-                    <th>Cập nhật tử vong</th>
-                    <th>% tử vong</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>
-                        <div id="code"></div>
-                    </td>
-                    <td>
-                        <div id="country" style="color:red"></div>
-                    </td>
-
-                    <td>
-                        <div id="cases"></div>
-                    </td>
-                    <td>
-                        <div id="recovered"></div>
-                    </td>
-                    <td>
-                        <div id="deaths"></div>
-                    </td>
-                    <td>
-                        <div id="update_deaths"></div>
-                    </td>
-                    <td>
-                        <div id="percent_deaths"></div>
-                    </td>
-
-                </tr>
-
-            </tbody>
-
-        </table>
-        <p><b class="btn btn-primary"><b style="color: rgb(243, 225, 225);">Theo dõi tình trạng COVID thế giới: </b>
-            </b></p>
-        <div class="box-tke-V3 border position-relative" style="margin-top: 17px;">
-            <span class="box-vn position-absolute">Việt Nam</span>
-            <div class="row mt-5">
-
-                <div class="col text-center text-uppercase text-danger-new">
-                    Số ca nhiễm <br> <span class="font24" id="total_casesvn"></span>
-                </div>
-                <div class="col text-center text-uppercase text-warning">
-                    Đang điều trị <br> <span class="font24" id="active_vn"></span>
-                </div>
-
-                <div class="col text-center text-uppercase text-success">
-                    Khỏi <br> <span class="font24" id="total_recoveredvn"></span>
-                </div>
-                <div class="col text-center text-uppercase text-danger-new1">
-                    Tử vong <br> <span class="font24" id="total_deathsvn"></span>
-                </div>
-
-            </div>
-            <hr>
-            <span class="box-tg position-absolute">Thế giới</span>
-            <div class="row mt-5" style="margin-top: 55px !important;">
-
-                <div class="col text-center text-uppercase text-danger-new">
-                    Tổng ca nhiễm <br> <span class="font24" id="total_cases"></span>
-                </div>
-                <div class="col text-center text-uppercase text-warning">
-                    Đang nhiễm <br> <span class="font24" id="active_world"></span>
-                </div>
-
-                <div class="col text-center text-uppercase text-success">
-                    Khỏi <br> <span class="font24" id="total_recovered"></span>
-                </div>
-                <div class="col text-center text-uppercase text-danger-new1">
-                    Tử vong <br> <span class="font24" id="total_deaths"></span>
-                </div>
-
-            </div>
-        </div>
-
-        <p><b class="btn btn-primary"><b style="color: rgb(243, 225, 225);">Theo dõi tình trạng COVID Thành phố Việt
-                    Nam: </b>
-            </b>
-            <span class="btn" style="background-color: #c9302c; color: white;">Tổng ca nhiễm</span>
-            <span class="btn" style="background-color: #c55f4e; color: white;">Hôm nay</span>
-            <span class="btn" style="background-color: #5b5759; color: white;">Tử vong</span>
-        </p>
-
-        <canvas id="myChart">
-
-        </canvas>
-
-        <div class="col-lg-6 d-none d-lg-block">
-            <div class="mb-4">
-                <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                        <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                        <div class=""></div>
-                    </div>
-                </div>
-                <h6 class="btn btn-danger">Số ca nhiễm</h6>
-                <canvas id="line-chart-cases-web" width="318" height="158"
-                    style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
-            </div>
-            <div class="mb-4">
-                <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                        <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                        <div class=""></div>
-                    </div>
-                </div>
-                <h6 class="btn btn-success">Số ca phục hồi</h6>
-                <canvas id="line-chart-recovered-web" width="318" height="158"
-                    style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
-            </div>
-            <div class="">
-                <div class="chartjs-size-monitor">
-                    <div class="chartjs-size-monitor-expand">
-                        <div class=""></div>
-                    </div>
-                    <div class="chartjs-size-monitor-shrink">
-                        <div class=""></div>
-                    </div>
-                </div>
-                <h6 class="btn btn-dark">Số ca tử vong</h6>
-                <canvas id="line-chart-deaths-web" width="318" height="158"
-                    style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
-            </div>
-        </div>
-        <p><b class="btn btn-primary"><b style="color: rgb(243, 225, 225);">Mức độ an toàn ở các thành phố việt nam</b>
-            </b>
-            <span class="btn btn-success">An Toàn</span>
-            <span class="btn btn-warning">Có rủi ro</span>
-            <span class="btn btn-danger">Không An toàn</span>
-        </p>
-        <canvas id="antoanvn"></canvas>
-        <hr>
-
-        <div id='map'></div>
-
-        <hr>
-        <div class="footer">
-            <div class="icon">
-                <h5>GIỚI THIỆU</h5>
-                <p>
-                    <span>Trang theo dõi dịch tễ COVID-19 <br> được viết bằng ngôn ngữ Javascript <br> Cảm ơn các bạn đã
-                        theo dõi!
-                        <br>
-                        <i class="fa fa-copyright"></i>2021 COVID-19
-                    </span>
+            <div class="col-md-12" style="text-align: center;">
+                <h3> <span><img style="height: 50px;" src="img/removelogo.png" alt=""></span>
+                    COVID-19
+                    <span><img style="height: 50px;" src="img/removelogo.png" alt=""></span>
+                </h3>
+                <p>Link1: <a href="https://ncovvn.xyz/">https://api.ncovvn.xyz</a>
+                    <a href="https://ncovvn.xyz/">(đang sử dụng)</a> </p>
+                <p>Link2: <a
+                        href="https://github.com/ExpDev07/coronavirus-tracker-api">https://github.com/ExpDev07/coronavirus-tracker-api</a>
+                    <a href="https://github.com/ExpDev07/coronavirus-tracker-api">(đang sử dụng)</a>
                 </p>
+
             </div>
-            <div class="icon">
-                <h5>KẾT NỐI</h5>
-                <ul>
-                    <li><a href="https://www.facebook.com/imvy.itup"><i class="fa fa-facebook"
-                                style="font-size: 30px;"></i></a> </li>
-                    <li><a href="https://www.instagram.com/imvy.01/"><i class="fa fa-instagram"
-                                style="font-size: 30px;"></i></a></li>
-                    <li><a href="#"><i class="fa fa-twitter" style="font-size: 30px;"></i></a></li>
-                </ul>
+            <p class="btn btn-danger"><b style="color: rgb(243, 225, 225);">Theo dõi tình trạng COVID tại: </b>
+                <b style="color:black;"> <span id="title"></span></b>
+
+            </p>
+            <select id="select_world" class="form-control">
+                <option value="">Chọn Quốc Gia</option>
+            </select>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Mã Quốc gia</th>
+                        <th>Quốc gia</th>
+
+                        <th>Số Ca Nhiễm</th>
+                        <th>Khỏi</th>
+                        <th>Tử Vong</th>
+                        <th>Cập nhật tử vong</th>
+                        <th>% tử vong</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <div id="code"></div>
+                        </td>
+                        <td>
+                            <div id="country" style="color:red"></div>
+                        </td>
+
+                        <td>
+                            <div id="cases"></div>
+                        </td>
+                        <td>
+                            <div id="recovered"></div>
+                        </td>
+                        <td>
+                            <div id="deaths"></div>
+                        </td>
+                        <td>
+                            <div id="update_deaths"></div>
+                        </td>
+                        <td>
+                            <div id="percent_deaths"></div>
+                        </td>
+
+                    </tr>
+
+                </tbody>
+
+            </table>
+            <p><b class="btn btn-primary"><b style="color: rgb(243, 225, 225);">Theo dõi tình trạng COVID thế giới: </b>
+                </b></p>
+            <div class="box-tke-V3 border position-relative" style="margin-top: 17px;">
+                <span class="box-vn position-absolute">Việt Nam</span>
+                <div class="row mt-5">
+
+                    <div class="col text-center text-uppercase text-danger-new">
+                        Số ca nhiễm <br> <span class="font24" id="total_casesvn"></span>
+                    </div>
+                    <div class="col text-center text-uppercase text-warning">
+                        Đang điều trị <br> <span class="font24" id="active_vn"></span>
+                    </div>
+
+                    <div class="col text-center text-uppercase text-success">
+                        Khỏi <br> <span class="font24" id="total_recoveredvn"></span>
+                    </div>
+                    <div class="col text-center text-uppercase text-danger-new1">
+                        Tử vong <br> <span class="font24" id="total_deathsvn"></span>
+                    </div>
+
+                </div>
+                <hr>
+                <span class="box-tg position-absolute">Thế giới</span>
+                <div class="row mt-5" style="margin-top: 55px !important;">
+
+                    <div class="col text-center text-uppercase text-danger-new">
+                        Tổng ca nhiễm <br> <span class="font24" id="total_cases"></span>
+                    </div>
+                    <div class="col text-center text-uppercase text-warning">
+                        Đang nhiễm <br> <span class="font24" id="active_world"></span>
+                    </div>
+
+                    <div class="col text-center text-uppercase text-success">
+                        Khỏi <br> <span class="font24" id="total_recovered"></span>
+                    </div>
+                    <div class="col text-center text-uppercase text-danger-new1">
+                        Tử vong <br> <span class="font24" id="total_deaths"></span>
+                    </div>
+
+                </div>
             </div>
-            <div class="icon">
-                <h5>CHỦ ĐỀ</h5>
-                <p>Covid-19 Thế giới</p>
-                <p>Covid-19 Việt Nam</p>
-                <p>An toàn</p>
+
+            <p><b class="btn btn-primary"><b style="color: rgb(243, 225, 225);">Theo dõi tình trạng COVID Thành phố Việt
+                        Nam: </b>
+                </b>
+                <span class="btn" style="background-color: #c9302c; color: white;">Tổng ca nhiễm</span>
+                <span class="btn" style="background-color: #c55f4e; color: white;">Hôm nay</span>
+                <span class="btn" style="background-color: #5b5759; color: white;">Tử vong</span>
+            </p>
+            <div class="col-9">
+                <canvas id="myChart" style="height: 333px; width: 400px;"></canvas>
             </div>
-            <div class="icon">
-                <h5>LIÊN HỆ</h5>
-                <p><i class="fa fa-map-marker"></i> 44 THÀNH THÁI, P.14, Q.10, TP.HCM</p>
-                <p><i class="fa fa-phone"></i> +84 123 456 789</p>
-                <p><i class="fa fa-envelope"></i> <a href="#">phuongvy012456@gmail.com</a></p>
+
+
+            </canvas>
+
+            <div class="col-3 d-none d-lg-block">
+                <div class="mb-4">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <h6 class="btn btn-danger">Số ca nhiễm</h6>
+                    <canvas id="line-chart-cases-web" width="318" height="158"
+                        style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
+                </div>
+                <div class="mb-4">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <h6 class="btn btn-success">Số ca phục hồi</h6>
+                    <canvas id="line-chart-recovered-web" width="318" height="158"
+                        style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
+                </div>
+                <div class="">
+                    <div class="chartjs-size-monitor">
+                        <div class="chartjs-size-monitor-expand">
+                            <div class=""></div>
+                        </div>
+                        <div class="chartjs-size-monitor-shrink">
+                            <div class=""></div>
+                        </div>
+                    </div>
+                    <h6 class="btn btn-dark">Số ca tử vong</h6>
+                    <canvas id="line-chart-deaths-web" width="318" height="158"
+                        style="display: block; height: 127px; width: 255px;" class="chartjs-render-monitor"></canvas>
+                </div>
+            </div>
+            <p><b class="btn btn-primary"><b style="color: rgb(243, 225, 225);">Mức độ an toàn ở các thành phố việt
+                        nam</b>
+                </b>
+                <span class="btn btn-success">An Toàn</span>
+                <span class="btn btn-warning">Có rủi ro</span>
+                <span class="btn btn-danger">Không An toàn</span>
+            </p>
+            <div class="col-9">
+                <canvas id="antoanvn"></canvas>
+            </div>
+            <div class="col-3">
+
+                <div id="mymap"></div>
+
+            </div>
+
+            <hr>
+
+            <div id='map'></div>
+            <hr>
+            <div class="footer">
+                <div class="icon">
+                    <h5>GIỚI THIỆU</h5>
+                    <p>
+                        <span>Trang theo dõi dịch tễ COVID-19 <br> được viết bằng ngôn ngữ Javascript <br> Cảm ơn các
+                            bạn đã
+                            theo dõi!
+                            <br>
+                            <i class="fa fa-copyright"></i>2021 COVID-19
+                        </span>
+                    </p>
+                </div>
+                <div class="icon">
+                    <h5>KẾT NỐI</h5>
+                    <ul>
+                        <li><a href="https://www.facebook.com/imvy.itup"><i class="fa fa-facebook"
+                                    style="font-size: 30px;"></i></a> </li>
+                        <li><a href="https://www.instagram.com/imvy.01/"><i class="fa fa-instagram"
+                                    style="font-size: 30px;"></i></a></li>
+                        <li><a href="#"><i class="fa fa-twitter" style="font-size: 30px;"></i></a></li>
+                    </ul>
+                </div>
+                <div class="icon">
+                    <h5>CHỦ ĐỀ</h5>
+                    <p>Covid-19 Thế giới</p>
+                    <p>Covid-19 Việt Nam</p>
+                    <p>An toàn</p>
+                </div>
+                <div class="icon">
+                    <h5>LIÊN HỆ</h5>
+                    <p><i class="fa fa-map-marker"></i> 44 THÀNH THÁI, P.14, Q.10, TP.HCM</p>
+                    <p><i class="fa fa-phone"></i> +84 123 456 789</p>
+                    <p><i class="fa fa-envelope"></i> <a href="#">phuongvy012456@gmail.com</a></p>
+                </div>
             </div>
         </div>
     </div>
